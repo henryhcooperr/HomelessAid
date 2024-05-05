@@ -2,6 +2,8 @@ import os
 import logging
 import openai
 
+#update test
+
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
