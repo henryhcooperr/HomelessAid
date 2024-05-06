@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/about.css') }}">
+    <style>
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('main.index') }}" class="back-button">Back</a>
+    <h1>About Page</h1>
+    <p>This website is a project for my introduction to changemaking class at University of San Diego</p>
+</body>
+</html>

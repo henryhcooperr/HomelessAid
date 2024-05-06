@@ -12,7 +12,7 @@
         <h2>Find Resources</h2>
     </header>
     <section class="search-form">
-        <form method="post">
+        <form method="post" id="searchForm"> <!-- Added id="searchForm" here -->
             <div class="form__group field">
                 <input type="text" class="form__field" placeholder="Problem" name="problem" id="problem" required />
                 <label for="problem" class="form__label">Problem</label>
@@ -23,7 +23,15 @@
             </div>
             <button type="submit" class="submit-button">Search</button>
         </form>
+        <div id="loadingMessage" style="display: none;">
+            <p>Loading...</p>
+        </div> <!-- Correctly closed the div here -->
     </section>
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function() {
+            document.getElementById('loadingMessage').style.display = 'block';  // Show loading message
+        });
+    </script>
     <hr>
     <section class="resource-list">
         <h3>Resources</h3>
@@ -43,5 +51,13 @@
             {% endfor %}
         </div>
     </section>
+    
+    <section class="about-button">
+        <a href="{{ url_for('main.about') }}" class="about-link">About</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Homeless Resources Finder: By Henry Cooper</p>
+    </footer>
 </body>
 </html>

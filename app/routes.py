@@ -12,3 +12,7 @@ def index():
         if problem and location:  # Ensure both inputs are provided
             resources = find_resources(problem, location) or []  # Ensure resources is never None
     return render_template('index.html', resources=resources)
+
+@bp.route('/about')
+def about():
+    return render_template('about.html')
