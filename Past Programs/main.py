@@ -2,7 +2,6 @@ import os
 import logging
 import openai
 
-#update test
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -86,6 +85,8 @@ def print_resources(resources):
         print(f"Address: {resource.get('address', 'N/A')}")
         print(f"Hours: {resource.get('hours', 'Please call for hours')}")
         print(f"Phone: {resource.get('phone', 'Please call for more info')}")
+
+
 
 def main():
     cont = True

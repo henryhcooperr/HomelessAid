@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homeless Resources Finder</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDI-ckZKQ-TG67y2j3xKBQqDTDPmLg846U" defer></script>
+    <script src="{{ url_for('static', filename='js/maps.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>How Can I Help You</h1>
+        <h2>Find Resources</h2>
+    </header>
+    <section class="search-form">
+        <form method="post">
+            <div class="form__group field">
+                <input type="text" class="form__field" placeholder="Problem" name="problem" id="problem" required />
+                <label for="problem" class="form__label">Problem</label>
+            </div>
+            <div class="form__group field">
+                <input type="text" class="form__field" placeholder="Location" name="location" id="location" required />
+                <label for="location" class="form__label">Location</label>
+            </div>
+            <button type="submit" class="submit-button">Search</button>
+        </form>
+    </section>
+    <hr>
+    <section class="resource-list">
+        <h3>Resources</h3>
+        <div>
+            {% for resource in resources %}
+            <article class="resource-item">
+                <div class="resource-details">
+                    <h4>{{ resource.name }}</h4>
+                    <p><strong>Address:</strong> {{ resource.address }}</p>
+                    <p><strong>Hours:</strong> {{ resource.hours }}</p>
+                    <p><strong>Phone:</strong> {{ resource.phone }}</p>
+                </div>
+                <div id="map-{{ loop.index }}" class="map"></div>
+            </article>
+            {% else %}
+            <p></p>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>
