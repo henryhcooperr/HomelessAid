@@ -1,0 +1,16 @@
+
+runtime: python39
+entrypoint: gunicorn -b :$PORT run:app
+
+handlers:
+- url: /static/css
+  static_dir: app/static/css
+- url: /static
+  static_dir: app/static
+- url: /.*
+  script: auto
+
+env_variables:
+  SECRET_KEY: "abd-gea-dgb-dag-eagetea"
+  OPENAI_API_KEY: "sk-proj-uFAiSQqvSn2pItQ9vXYdT3BlbkFJAeSmGxLcc54CVuNlZf4S"
+  

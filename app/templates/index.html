@@ -1,63 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Homeless Resources Finder</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDI-ckZKQ-TG67y2j3xKBQqDTDPmLg846U" defer></script>
-    <script src="{{ url_for('static', filename='js/maps.js') }}" defer></script>
+  <title>Homeless Resources Finder</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDI-ckZKQ-TG67y2j3xKBQqDTDPmLg846U" defer></script>
+  <script src="{{ url_for('static', filename='js/maps.js') }}" defer></script>
 </head>
-<body>
+<body class="d-flex flex-column justify-content-center w-100 h-100">
+  <div class="content-container">
     <header>
-        <h1>How Can I Help You</h1>
-        <h2>Find Resources</h2>
+      <h1>How Can I Help You Find Resources</h1>
+      <h2>
+        This is a website built to help the homeless in San Diego find resources to help them get back on their feet
+        All you have to do is describe your problem / need and location, and we will provide you with a list of resources in your area that can help you.
+    </h2>
     </header>
     <section class="search-form">
-        <form method="post" id="searchForm"> <!-- Added id="searchForm" here -->
-            <div class="form__group field">
-                <input type="text" class="form__field" placeholder="Problem" name="problem" id="problem" required />
-                <label for="problem" class="form__label">Problem</label>
-            </div>
-            <div class="form__group field">
-                <input type="text" class="form__field" placeholder="Location" name="location" id="location" required />
-                <label for="location" class="form__label">Location</label>
-            </div>
-            <button type="submit" class="submit-button">Search</button>
-        </form>
-        <div id="loadingMessage" style="display: none;">
-            <p>Loading...</p>
-        </div> <!-- Correctly closed the div here -->
+      <form method="post" id="searchForm">
+        <div class="form__group field">
+          <input type="text" class="form__field" placeholder="Problem" name="problem" id="problem" required />
+          <label for="problem" class="form__label">Please Describe Your Issue</label>
+        </div>
+        <div class="form__group field">
+          <input type="text" class="form__field" placeholder="Location" name="location" id="location" required />
+          <label for="location" class="form__label">Location</label>
+        </div>
+        <button type="submit" class="submit-button">Search</button>
+      </form>
+      <div id="loadingMessage" style="display: none;">
+        <p>Loading...</p>
+      </div>
     </section>
-    <script>
-        document.getElementById('searchForm').addEventListener('submit', function() {
-            document.getElementById('loadingMessage').style.display = 'block';  // Show loading message
-        });
-    </script>
     <hr>
     <section class="resource-list">
-        <h3>Resources</h3>
-        <div>
-            {% for resource in resources %}
-            <article class="resource-item">
-                <div class="resource-details">
-                    <h4>{{ resource.name }}</h4>
-                    <p><strong>Address:</strong> {{ resource.address }}</p>
-                    <p><strong>Hours:</strong> {{ resource.hours }}</p>
-                    <p><strong>Phone:</strong> {{ resource.phone }}</p>
-                </div>
-                <div id="map-{{ loop.index }}" class="map"></div>
-            </article>
-            {% else %}
-            <p></p>
-            {% endfor %}
-        </div>
+      <h3>Resources</h3>
+      <div>
+        {% for resource in resources %}
+        <article class="resource-item typewriter">
+          <div class="resource-details">
+            <h4>{{ resource.name }}</h4>
+            <p><strong>Address:</strong> {{ resource.address }}</p>
+            <p><strong>Hours:</strong> {{ resource.hours }}</p>
+            <p><strong>Phone:</strong> {{ resource.phone }}</p>
+          </div>
+          <div id="map-{{ loop.index }}" class="map"></div>
+        </article>
+        {% else %}
+        <p>No resources found.</p>
+        {% endfor %}
+      </div>
     </section>
-    
-    <section class="about-button">
-        <a href="{{ url_for('main.about') }}" class="about-link">About</a>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Homeless Resources Finder: By Henry Cooper</p>
-    </footer>
+  </div>
+  <section class="about-button">
+    <a href="{{ url_for('main.about') }}" class="about-link">About</a>
+  </section>
+  <footer>
+    <p>&copy; 2024 Homeless Resources Finder: By Henry Cooper</p>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const resourceItems = document.querySelectorAll('.resource-item');
+  
+      resourceItems.forEach((item, index) => {
+        const delay = index * 3.5; // each item starts after the previous one finishes
+        item.style.animationDelay = `${delay}s`; // Delay the visibility of the item
+        item.style.animation = `fadeIn 0.5s ${delay}s forwards`; // Fade in effect
+  
+        const details = item.querySelectorAll('h4, p');
+        details.forEach(detail => {
+          detail.style.animation = `typing 3.5s steps(30, end) ${delay}s forwards, blink-caret .5s step-end ${delay}s infinite`;
+        });
+      });
+    });
+  </script>
+  <script>
+   document.addEventListener('DOMContentLoaded', function () {
+      const resourceItems = document.querySelectorAll('.resource-item');
+  
+      resourceItems.forEach((item, index) => {
+        const delay = index * 3.5; // each item starts after the previous one finishes
+        item.style.animationDelay = `${delay}s`; // Delay the visibility of the item
+        item.style.animation = `fadeIn 0.5s ${delay}s forwards`; // Fade in effect
+  
+        const details = item.querySelectorAll('h4, p');
+        details.forEach(detail => {
+          detail.style.animation = `typing 3.5s steps(30, end) ${delay}s forwards, blink-caret .5s step-end ${delay}s infinite`;
+        });
+      });
+    });
+  </script>
+  
 </body>
 </html>
