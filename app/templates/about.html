@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>About Page</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/about.css') }}">
-    <style>
-        .back-button {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-    </style>
+  <title>About Me - Homeless Resources Finder</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
 </head>
-<body>
-    <a href="{{ url_for('main.index') }}" class="back-button">Back</a>
-    <h1>About Page</h1>
-    <p>This website is a project for my introduction to changemaking class at University of San Diego</p>
+<body class="d-flex flex-column justify-content-center w-100 h-100">
+  <div class="content-container">
+    <header>
+      <h1>About Us</h1>
+    </header>
+    <section class="about-info">
+      <p>This website was created for a project in my Intro to Changemaking class, with a goal of creatin an initiative to help the homeless population in San Diego find necessary resources. The goal is to make information more accessible and provide easy-to-navigate solutions for individuals in need.</p>
+      <p>Welcome to my website, a platform designed to connect homeless individuals with the resources they need by simply entering their problem and location. This project is the result of a powerful combination of inspiration, empathy, and a strong desire to create meaningful change.</p>
+        <p>While exploring various stories and data about the struggles faced by those experiencing homelessness and living in poverty throughout my changemaking class, I was deeply moved by the documentary "Tony." This film effectively puts a human face on homelessness and the systemic barriers individuals face on a daily basis. It serves as a poignant reminder that behind every statistic, there's a person fighting a battle we know little about.</p>
+        <p>My determination to create this website was further reinforced by Hancock's compelling article, "Putting a Face to a Statistic," and the heart-wrenching yet inspiring story of Madonna Harris detailed in "Welfare is Dead." Madonna's journey through numerous setbacks, from job loss to navigating an unsympathetic welfare system, highlighted an all-too-common narrative in the lives of many Americans. Her resilience in the face of these challenges and the systemic inadequacies she battled underscored the urgent need for more accessible support systems.
+        These stories made one thing abundantly clear: we can't continue to apply temporary fixes to systemic problems. Our welfare systems need to be more than just gatekeepers of resources; they should be accessible platforms that genuinely strive to help people overcome their difficult situations. </p>
+        <p>This realization sparked the idea for a website that not only connects homeless individuals to resources but does so in a way that respects their dignity and addresses their unique circumstances.
+        This platform is my attempt to turn empathy into action. It's designed to cut through bureaucratic red tape and provide immediate, relevant assistance to those who need it most. By entering a problem and a location, users are directed to practical, actionable resources that can provide real help in real-time.
+        </p>
+    </section>
+    <button class="back-button" onclick="window.history.back();">Go Back</button>
+  </div>
+  <footer>
+    <p>&copy; 2024 Homeless Resources Finder: By Henry Cooper</p>
+  </footer>
 </body>
 </html>
