@@ -1,4 +1,4 @@
-.b
+
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -158,3 +158,21 @@ body {
       font-size: 1.2vw;
     }
   }
+  .about-info p::first-letter {
+    float: left;
+    font-size: 2.1em;  /* Adjusts the size of the drop cap */
+    line-height: .4; /* Adjusts the line height to align it better with the rest of the text */ /* Makes the drop cap bold */
+    margin-right: 0px; /* Adds some space between the drop cap and the rest of the text */ /* You can specify a color to make it stand out */
+}
+@media (max-width: 768px) {
+    .about-info p::first-letter {
+        font-size: 2em;  /* Smaller size for small devices */
+    }
+}
+.about-info p {
+    font-weight: 200;
+    font-family: 'Merriweather', serif;
+    margin-bottom: 20px; /* Adjust this value to increase or decrease spacing */
+    line-height: 1.6; /* This enhances readability by spacing out lines within paragraphs */
+}
+

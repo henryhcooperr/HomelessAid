@@ -25,7 +25,7 @@ def find_resources(problem, location):
 
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-4-turbo",
             messages=[
                 {"role": "system", "content": system_message},
                 {"role": "user", "content": user_message}
